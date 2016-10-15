@@ -1,0 +1,47 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Health Diary</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="/bower_components/pickadate/lib/themes/classic.css">
+	<link rel="stylesheet" href="/bower_components/pickadate/lib/themes/classic.date.css">
+	<link rel="stylesheet" href="/bower_components/pickadate/lib/themes/classic.time.css">
+
+	<style>
+	.redbook-iframe {
+		width: 100%;
+		height: 60em;
+		}
+	</style>
+</head>
+<body ng-app="PHD-Prev" ng-controller="PreventionFormController as mainCtrl">
+
+	<h1>Questionnaire</h1>
+
+	<div class="col-sm-10">
+	    <form sf-schema="schema" sf-form="form" sf-model="model" ng-submit="onSave(myForm)" name="myForm" class="form-horizontal-x"></form>
+
+	<h1>Recommendations</h1>
+
+    </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+
+<script type="text/javascript" src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script type="text/javascript" src="/bower_components/tv4/tv4.js"></script>
+<script type="text/javascript" src="/bower_components/objectpath/lib/ObjectPath.js"></script>
+<script type="text/javascript" src="/bower_components/angular-schema-form/dist/schema-form.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-schema-form/dist/bootstrap-decorator.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-schema-form-datepicker/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/bower_components/pickadate/lib/picker.js"></script>
+<script type="text/javascript" src="/bower_components/pickadate/lib/picker.date.js"></script>
+<script type="text/javascript" src="/bower_components/pickadate/lib/picker.time.js"></script>
+
+  <script src="prevention-ng.js"></script>
+</body>
+</html>
