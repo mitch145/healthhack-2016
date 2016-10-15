@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mitch's Todo List</title>
+    <title>HealthHack</title>
     <link rel="stylesheet" href="public/app.css">
 </head>
 <body ng-app="FoodLook" ng-controller="MainController as mainCtrl">
@@ -16,36 +16,36 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Munchr</a>
+        <a class="navbar-brand" href="#">HealthHack</a>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="#" ng-click="login = 'false'">Logout</a></li>
+          <li><a href="#" ng-click="page = 'login'">Logout</a></li>
         </ul>
       </div>
     </div>
   </nav>
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 login-screen" ng-show="login == 'false'">
-        <h1 class="text-center title">Munchr</h1>
+      <div class="col-xs-12 login-screen" ng-show="page == 'login'">
+        <h1 class="text-center title">Title</h1>
         <div class="login-buttons">
-          <a href="#" class="btn btn-primary btn-lg btn-block google-login" ng-click="login = 'google'">Login With Google</a>
-          <a href="#" class="btn btn-primary btn-lg btn-block facebook-login" ng-click="login = 'facebook'">Login With Facebook</a>
-          <a href="#" class="btn btn-primary btn-lg btn-block skip-login" ng-click="login = 'skip'">Skip for Now</a>
+          <a href="#" class="btn btn-primary btn-lg btn-block google-login" ng-click="page = 'google'">Login With Google</a>
+          <a href="#" class="btn btn-primary btn-lg btn-block facebook-login" ng-click="page = 'facebook'">Login With Facebook</a>
+          <a href="#" class="btn btn-primary btn-lg btn-block skip-login" ng-click="page = 'skip'">Skip for Now</a>
         </div>
       </div>
-      <div class="col-xs-12" ng-show="login == 'google'">
-        <a href="#" class="btn btn-primary btn-lg btn-block google-login" ng-click="login = 'true'">Authenticate With Google</a>
+      <div class="col-xs-12" ng-show="page == 'google'">
+        <a href="#" class="btn btn-primary btn-lg btn-block google-login" ng-click="page = 'main'">Authenticate With Google</a>
       </div>
-      <div class="col-xs-12" ng-show="login == 'facebook'">
-        <a href="#" class="btn btn-primary btn-lg btn-block facebook-login" ng-click="login = 'true'">Authenticate With Facebook</a>
+      <div class="col-xs-12" ng-show="page == 'facebook'">
+        <a href="#" class="btn btn-primary btn-lg btn-block facebook-login" ng-click="page = 'main'">Authenticate With Facebook</a>
       </div>
-      <div class="col-xs-12" ng-show="login == 'skip'">
-        <a href="#" class="btn btn-primary btn-lg btn-block skip-login" ng-click="login = 'true'">Skip for Now</a>
+      <div class="col-xs-12" ng-show="page == 'skip'">
+        <a href="#" class="btn btn-primary btn-lg btn-block skip-login" ng-click="page = 'main'">Skip for Now</a>
       </div>
-      <div class="col-xs-12" ng-show="login == 'true'">
+      <div class="col-xs-12" ng-show="page == 'main'">
         <h1 class="text-center">Categories page</h1>
       </div>
     </div>
