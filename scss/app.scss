@@ -1,9 +1,10 @@
 @import "variables";
 @import "bootstrap";
 @import "bootswatch";
-
-body{
-  background-color: #ecf0f1;
+.navbar {
+  margin-bottom: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #ececec;
 }
 .login-screen{
   .title{
@@ -17,16 +18,75 @@ body{
     .btn:hover{
       margin-top: 11px;
     }
-    .google-login{
-      background-color: #2ecc71;
-      border-color: #27ae60;
-    }
-    .facebook-login{
+  }
+}
+.main-screen{
 
+  .menu{
+    height: 95vh;
+    width: 100px;
+    float: left;
+    background-color: #f8f8f8;
+    border-right: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+    .btn{
+      margin: 90px 0 0 26px;
+      padding: 1px 16px 6px 16px;
+      font-size: 30px;
+      box-shadow: none;
     }
-    .skip-login{
-      background-color: #e74c3c;
-      border-color: #c0392b;
+  }
+  .notes-list{
+    height: 95vh;
+    width: 300px;
+    float: left;
+    border-right: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+    overflow: scroll;
+    .note{
+      display: flex;
+      height: 75px;
+      .note-date{
+        align-items: stretch;
+        padding: 5px;
+        border-right: 1px solid #ececec;
+        height: 100%;
+        width: 75px;
+        p{
+          margin-bottom: 3px;
+          padding: 0 10px 0 10px;
+        }
+      }
+      .note-content{
+        width: 225px;
+        align-items: stretch;
+        padding: 5px;
+        height: 100%;
+        border-bottom: 1px solid #ececec;
+        p{
+          margin-top: 3px;
+          width: 220px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+        }
+      }
+      .blue-date{
+        background-color: #3498db;
+        color: #ecf0f1;
+      }
+      .red-date{
+        background-color: #e74c3c;
+        color: #ecf0f1;
+      }
+      h3, h4, p{
+        margin: 0;
+      }
     }
+  }
+  .display-note{
+    height: 95vh;
+    float: left;
   }
 }
