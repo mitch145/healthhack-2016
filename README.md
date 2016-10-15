@@ -29,6 +29,10 @@ Thanks to
 - Angular Schema Forms
 - Bootstrap
 - Bootswatch paper theme
+- moment.js
+- pickadate.js
+- FileSaver.js
+- Blob.js
 
 ## How to Install
 1. git clone
