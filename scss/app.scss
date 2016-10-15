@@ -1,0 +1,32 @@
+@import "variables";
+@import "bootstrap";
+@import "bootswatch";
+
+body{
+  background-color: #ecf0f1;
+}
+.login-screen{
+  .title{
+    font-size: 100px;
+  }
+  .login-buttons{
+    margin-top: 100px;
+    .btn{
+      margin-top: 10px;
+    }
+    .btn:hover{
+      margin-top: 11px;
+    }
+    .google-login{
+      background-color: #2ecc71;
+      border-color: #27ae60;
+    }
+    .facebook-login{
+
+    }
+    .skip-login{
+      background-color: #e74c3c;
+      border-color: #c0392b;
+    }
+  }
+}
