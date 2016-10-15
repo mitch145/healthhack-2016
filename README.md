@@ -24,7 +24,7 @@ see.
 ## Built at HealthHackAU Sydney 2016
 
 Thanks to
-- [@HealthHackAU][https://twitter.com/HealthHackAU] sponsors ([@Data61news][https://twitter.com/data61news], [@GarvanInstitute][https://twitter.com/GarvanInstitute], [@yow_oz][https://twitter.com/yow_oz], [@awscloud][https://twitter.com/awscloud], [@teamhealthshare][https://twitter.com/teamhealthshare], [@ANSTO][https://twitter.com/ANSTO])
+- [@HealthHackAU](https://twitter.com/HealthHackAU) sponsors ([@Data61news](https://twitter.com/data61news) [@GarvanInstitute](https://twitter.com/GarvanInstitute) [@yow_oz](https://twitter.com/yow_oz) [@awscloud](https://twitter.com/awscloud) [@teamhealthshare](https://twitter.com/teamhealthshare) [@ANSTO](https://twitter.com/ANSTO))
 - Angular
 - Angular Schema Forms
 - Bootstrap
