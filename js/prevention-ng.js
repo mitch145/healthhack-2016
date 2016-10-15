@@ -285,7 +285,7 @@ var idempotentialize = function(f){
     recs.forEach(function(rec) {
 
       var next_checkup = rec.next_checkup.clone();
-      var month_start = next_checkup.clone().date(0);
+      var month_start = next_checkup.clone().date(0).hour(0).minute(0).second(0).millisecond(0);
       var month_end = month_start.clone().add(1, "months");
       
       var recurs = { freq: 'MONTHLY', interval: rec.interval_months };
