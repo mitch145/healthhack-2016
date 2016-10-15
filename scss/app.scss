@@ -21,24 +21,27 @@
   }
 }
 .main-screen{
-
   .menu{
-    height: 95vh;
-    width: 100px;
+    overflow: scroll;
+    height: 90vh;
+    // width: 150px;
     float: left;
     background-color: #f8f8f8;
     border-right: 1px solid #ececec;
     border-bottom: 1px solid #ececec;
     .btn{
-      margin: 28px 0 0 26px;
-      padding: 1px 16px 6px 16px;
-      font-size: 30px;
+      font-size: 14px;
       box-shadow: none;
+      margin: 40px 0 0 10px;
+      border: 1px solid #ececec;
+      width: 130px;
+    }
+    .btn:first-of-type{
+      margin-top: 20px;
     }
   }
   .notes-list{
-    height: 95vh;
-    width: 300px;
+    height: 90vh;
     float: left;
     border-right: 1px solid #ececec;
     border-bottom: 1px solid #ececec;
@@ -46,10 +49,10 @@
     .note{
       display: flex;
       height: 75px;
+      border-bottom: 1px solid #ececec;
       .note-date{
         align-items: stretch;
         padding: 5px;
-        border-right: 1px solid #ececec;
         height: 100%;
         width: 75px;
         p{
@@ -58,14 +61,11 @@
         }
       }
       .note-content{
-        width: 225px;
-        align-items: stretch;
+        // align-items: stretch;
         padding: 5px;
         height: 100%;
-        border-bottom: 1px solid #ececec;
         p{
           margin-top: 3px;
-          width: 220px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -90,6 +90,7 @@
     }
     .note:hover, .active{
       cursor:pointer;
+      background-color: #bdc3c7;
       .blue-date{
         background-color: #2980b9;
       }
@@ -102,8 +103,9 @@
     }
   }
   .display-note{
+    overflow: scroll;
     padding: 10px;
-    height: 95vh;
+    height: 90vh;
     float: left;
     h1{
       font-size: 60px;
