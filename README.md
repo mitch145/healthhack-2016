@@ -1,5 +1,8 @@
 # PHD (Personal Health Diary)
-*"It's all about you"*
+*"Your health in your words"*
+
+* [Design prototype](https://projects.invisionapp.com/share/U68YSI6BR#/screens/197225571_Diarypage1)
+* [Development prototype](http://personalhealthdiary.mitchball.com/)
 
 ## Synopsis
 Do you know when was the last time you had a tetanus shot? Can you remember
