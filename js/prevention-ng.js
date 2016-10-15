@@ -49,7 +49,20 @@ angular.module('PHD-Prev', ['schemaForm'])
 				"average - opportunistic",
 				"increased - opportunistic",
 				 "high - yearly",
-		],
+		   ],
+	  },
+	  crc_risk: {
+	    type: "string",
+		title: "Risk",
+		description: "<a target='blank' href='http://www.racgp.org.au/your-practice/guidelines/redbook/early-detection-of-cancers/colorectal-cancer-(crc)/'>See guidelines</a>",
+		default: "unsure",
+		enum: [
+				"unsure",
+				"average - 2 yearly FOBT",
+				"moderately increased - 5 yearly colonoscopy",
+				"high - FAP",
+				"high - Lynch syndrome",
+		   ],
 	  },
 
 	  sti_risk: {
@@ -74,6 +87,7 @@ angular.module('PHD-Prev', ['schemaForm'])
 	"metabolism_last_checked",
 	{ title: "STI checks", type: "fieldset", items: [ "sti_risk", "sti_last_checked", ], },
 	{ title: "Skin checks", items: [ "skin_risk", "skin_last_checked", ], type: "fieldset", },
+	{ title: "Bowel screening", items: [ "crc_risk", "crc_last_checked", ], type: "fieldset", },
 	{
 		title: "Pap smear",
 		condition: "model.birth_gender == 'Female'",
@@ -141,7 +155,11 @@ angular.module('PHD-Prev', ['schemaForm'])
      { title: "Bowel cancer",
        last_check: "crc_last_checked",
        options: [
-         { freq: 2, units: 'years', if_age: { min: 50, max: 75} },
+         { freq: 2, units: 'years', if_age: { min: 50}, if_risk: { crc_risk: 'average - 2 yearly FOBT' } },
+         { freq: 5, units: 'years', if_age: { min: 50}, if_risk: { crc_risk: 'moderately increased - 5 yearly colonoscopy' } },
+         { freq: 1, units: 'years', if_age: { min: 12, max: 35}, if_risk: { crc_risk: 'high - FAP' } },
+         { freq: 3, units: 'years', if_age: { min: 35}, if_risk: { crc_risk: 'high - FAP' } },
+         { freq: 1, units: 'years', if_age: { min: 25}, if_risk: { crc_risk: 'high - Lynch syndrome' } },
 
          { freq: 1, units: 'years', if_risk: { crc_risk: ''} },
          { freq: 6, units: 'months', if_risk: { crc_risk: ''} },
@@ -218,12 +236,18 @@ var idempotentialize = function(f){
      
         var matching = guideline.options.filter(function(option) {
            if (option.if_any) {
-              return option.if_any.some(checkYes);
-           } else if (option.if_risk) {
+              if (option.if_any.some(checkYes) == false) {
+                return false;
+              }
+           }
+           if (option.if_risk) {
               var key = Object.keys(option.if_risk)[0];
               var val = option.if_risk[key];
-              return model[key] === val;
-           } else if (option.if_age) {
+              if( model[key] !== val) {
+                return false;
+              }
+           }
+           if (option.if_age) {
               var min_age = option.if_age.min;
               var max_age = option.if_age.max;
               console.log(guideline.title, "age range", min_age, max_age, "age=", age);
@@ -231,12 +255,10 @@ var idempotentialize = function(f){
                 return false;
               } else if (age > max_age) {
                 return false;
-              } else {
-                return true;
               }
-           } else {
-              return true;
-           }
+           } 
+
+           return true;
         });
         console.log(guideline.title, "matching", matching);
 
