@@ -289,6 +289,7 @@ var idempotentialize = function(f){
       var month_end = month_start.clone().add(1, "months");
       
       var recurs = { freq: 'MONTHLY', interval: rec.interval_months };
+      debugger;
       cal.addEvent("Reminder - " + rec.title, "Reminder from RADR", "", month_start, month_end, recurs);
     });
 
