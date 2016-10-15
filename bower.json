@@ -13,5 +13,8 @@
   ],
   "dependencies": {
     "bootstrap-sass": "^3.3.6"
+  },
+  "resolutions": {
+    "tv4": "~1.0.15"
   }
 }

@@ -1,3 +1,4 @@
+"use strict";
 // vim: set ts=2 sw=2 et:
 
 angular.module('PHD-Prev', ['schemaForm'])
@@ -23,6 +24,10 @@ angular.module('PHD-Prev', ['schemaForm'])
       overweight: { title: "Overweight", enum: ['unsure','yes','no'], type: "string", },
       cvd: { title: "Cardiovascular disease", enum: ['unsure','yes','no'], type: "string", },
       cvdfh: { title: "Cardiovascular disease family history", enum: ['unsure','yes','no'], type: "string", },
+      cvdrisk: {
+        title: "Cardiovascular disease risk", enum: ['unsure','low (<10%)','moderate (10-15%)', 'high (>15%)'], type: "string",
+        description: "<a target='blank' href='http://www.racgp.org.au/your-practice/guidelines/redbook/prevention-of-vascular-and-metabolic-disease/blood-pressure/'>See guidelines</a>",
+      },
       stroke: { title: "Stroke", enum: ['unsure','yes','no'], type: "string", },
       gout: { title: "Gout", enum: ['unsure','yes','no'], type: "string", },
       liver: { title: "Liver disease", enum: ['unsure','yes','no'], type: "string", },
@@ -63,7 +68,7 @@ angular.module('PHD-Prev', ['schemaForm'])
 
   $scope.form = [
     "birth_year", "birth_month", "birth_gender",
-	"atsi", "diabetes", "overweight", "cvd", "stroke", "gout", "liver",
+	"atsi", "diabetes", "overweight", "cvd", "cvdrisk", "stroke", "gout", "liver",
 	"metabolism_last_checked",
 	{
 		type: "fieldset",
@@ -108,10 +113,6 @@ angular.module('PHD-Prev', ['schemaForm'])
     }
   ];
 
-  $scope.without_form = {
-
-  };
-
   $scope.model = {};
   var modelJson = localStorage["prevention_answers"];
   if (modelJson) {
@@ -121,42 +122,120 @@ angular.module('PHD-Prev', ['schemaForm'])
 
   $scope.guidelines = [
     /* based on the RACGP Red Book 9th edition */
-
      { title: "Weight check",
-       guide: [
-         { freq: '2y', },
-         { freq: '1y', if_any: ['atsi', 'diabetes', 'cvd', 'stroke', 'gout', 'liver'] },
-         { freq: '6m', if_any: ['overweight'] },
+       last_check: "metabolism_last_checked",
+       options: [
+         { freq: 1, units: 'years', if_any: ['atsi', 'diabetes', 'cvd', 'stroke', 'gout', 'liver'] },
+         { freq: 2, units: 'years', },
+         { freq: 6, units: 'months', if_any: ['overweight'] },
        ],
      },
-     { title: "Nutrition",
-       guide: [
-         { freq: '2y', },
-         { freq: '6m', if_any: ['overweight', 'diabetes', 'cvdfh'] },
+     { title: "Nutrition review",
+       last_check: "metabolism_last_checked",
+       options: [
+         { freq: 2, units: 'years', },
+         { freq: 6, units: 'months', if_any: ['overweight', 'diabetes', 'cvdfh'] },
        ],
      },
-      
-
-
+     { title: "Blood pressure",
+       last_check: "metabolism_last_checked",
+       options: [
+         { freq: 2, units: 'years', },
+         { freq: 12, units: 'months', if_risk: { cvdrisk: 'moderate (10-15%)'} },
+         { freq: 6, units: 'months', if_any: ['cvd'] },
+         { freq: 3, units: 'months', if_risk: { cvdrisk: 'high (>15%)'} },
+       ],
+     },
+     { title: "STI check",
+       last_check: "sti_last_checked",
+       options: [
+         { freq: 1, units: 'years', if_risk: { sti_risk: 'higher'} },
+         { freq: 6, units: 'months', if_risk: { sti_risk: 'highest'} },
+       ],
+     },
   ];
+  $scope.guidelines.forEach(function(guideline) {
+    guideline.options.forEach(function(option) {
+        option.duration = moment.duration(option.freq, option.units);
+        option.duration_ms = option.duration.asMilliseconds();
+    });
 
-  $scope.updateRecs = function() {
+    guideline.options.sort(function(a,b) {
+      return a.duration_ms - b.duration_ms;
+      /* ascending order - shortest duration first */
+    });
+  });
 
-     var recs = [];
+  var prev_recs = "";
+  
+var idempotentialize = function(f){
+    var previous;
+    var f_idempotent = function(model){
+       var ret = f(model);
+       if (angular.toJson(ret)==angular.toJson(previous))
+          ret = previous;
+       previous = ret;
+       return ret;
+    }
+    return f_idempotent;
+};
+  $scope.getRecommendations = idempotentialize(function(model) {
 
-     /* overweight */
-     if ($scope.model.atsi == 'yes' || 
-         $scope.model.diabetes == 'yes' || 
-         $scope.model.cvd == 'yes' || 
-         $scope.model.stroke == 'yes' || 
-         $scope.model.gout == 'yes' || 
-         $scope.model.liver == 'yes')
-     {
-        var rec = { title: 'Weight check', 
+     var checkYes = function(key) {
+        return model[key] === "yes";
+     };
 
-     }
+     var recs = $scope.guidelines.map(function(guideline) {
+     
+        var matching = guideline.options.filter(function(option) {
+           if (option.if_any) {
+              return option.if_any.some(checkYes);
+           } else if (option.if_risk) {
+              var key = Object.keys(option.if_risk)[0];
+              var val = option.if_risk[key];
+              return model[key] === val;
+           } else {
+              return true;
+           }
+        });
 
-  };
+        if (matching.length == 0) {
+          return null;
+        }
+
+
+        var from_date = moment();
+        var last_checked = model[guideline.last_check];
+        if (last_checked) {
+           from_date = moment(last_checked);
+        }
+
+        var next_checkup = from_date.clone().add(matching[0].duration);
+        next_checkup.second(0);
+        next_checkup.millisecond(0);
+
+        return {
+          title: guideline.title,
+          interval_txt: matching[0].duration.humanize(),
+          interval_months: matching[0].duration.asMonths(),
+          prev_checkup_txt: last_checked ? from_date.format("D MMM YYYY") : "",
+          next_checkup_mmyy: next_checkup.format("MMMM YYYY"),
+          next_checkup: next_checkup,
+        };
+     });
+     recs = recs.filter(function(rec) { return rec != null; });
+     recs.sort(function(a,b) {
+        return a.next_checkup.valueOf() - b.next_checkup.valueOf();
+     });
+
+     console.log("recs", recs);
+
+     return recs;
+
+  });
+
+
+
  
   $scope.onSave = function(form) {
 		$scope.$broadcast('schemaFormValidate');
