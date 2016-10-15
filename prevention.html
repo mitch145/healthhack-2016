@@ -3,8 +3,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Health Diary</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://xmaxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://xmaxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.css">
 
 	<link rel="stylesheet" href="/bower_components/pickadate/lib/themes/classic.css">
 	<link rel="stylesheet" href="/bower_components/pickadate/lib/themes/classic.date.css">
@@ -41,11 +42,8 @@
       </div>
     </div>
   </nav>
-
-	<div class="col-sm-8">
-	    <form sf-schema="schema" sf-form="form" sf-model="model" ng-submit="onSave(myForm)"
-              name="myForm" class="form-horizontal-x" sf-options-x="{formDefaults: { fieldHtmlClass:'col-sm-8' } }">
-        </form>
+	<div class="col-sm-8 content">
+	    <form sf-schema="schema" sf-form="form" sf-model="model" ng-submit="onSave(myForm)" name="myForm"> </form>
 
 		<h1>Recommendations</h1>
 

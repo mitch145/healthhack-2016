@@ -132,6 +132,12 @@ angular.module('PHD-Prev', ['schemaForm'])
          { freq: 3, units: 'months', if_risk: { cvdrisk: 'high (>15%)'} },
        ],
      },
+     { title: "Skin checks",
+       last_check: "skin_last_checked",
+       options: [
+         { freq: 1, units: 'years', if_risk: { skin_risk : 'high - yearly'} },
+       ],
+     },
      { title: "Bowel cancer",
        last_check: "crc_last_checked",
        options: [
@@ -300,7 +306,7 @@ var idempotentialize = function(f){
 
 });
 
-$(document).on("click", "a", function() {
+$(document).on("click", ".content a", function() {
 
    var link = this;
    var href = $(link).attr("href");
