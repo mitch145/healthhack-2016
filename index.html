@@ -6,7 +6,7 @@
     <title>HealthHack</title>
     <link rel="stylesheet" href="public/app.css">
 </head>
-<body ng-app="FoodLook" ng-controller="MainController as mainCtrl">
+<body ng-app="HealthHack" ng-controller="MainController as mainCtrl">
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -29,11 +29,10 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 login-screen" ng-show="page == 'login'">
-        <h1 class="text-center title">Title</h1>
+        <h1 class="text-center title">HealthHack</h1>
         <div class="login-buttons">
           <a href="#" class="btn btn-primary btn-lg btn-block google-login" ng-click="page = 'google'">Login With Google</a>
           <a href="#" class="btn btn-primary btn-lg btn-block facebook-login" ng-click="page = 'facebook'">Login With Facebook</a>
-          <a href="#" class="btn btn-primary btn-lg btn-block skip-login" ng-click="page = 'skip'">Skip for Now</a>
         </div>
       </div>
       <div class="col-xs-12" ng-show="page == 'google'">
@@ -41,9 +40,6 @@
       </div>
       <div class="col-xs-12" ng-show="page == 'facebook'">
         <a href="#" class="btn btn-primary btn-lg btn-block facebook-login" ng-click="page = 'main'">Authenticate With Facebook</a>
-      </div>
-      <div class="col-xs-12" ng-show="page == 'skip'">
-        <a href="#" class="btn btn-primary btn-lg btn-block skip-login" ng-click="page = 'main'">Skip for Now</a>
       </div>
       <div class="col-xs-12" ng-show="page == 'main'">
         <h1 class="text-center">Categories page</h1>
