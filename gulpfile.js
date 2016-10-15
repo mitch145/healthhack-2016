@@ -17,10 +17,11 @@ gulp.task('browser-sync', function() {
         }
     });
 });
+gulp.task('build');
 
 gulp.task('watch', ['browser-sync'], function () {
-    gulp.watch('src/*.jsx', ['build']);
     gulp.watch("scss/*.scss", ['scss']);
+    gulp.watch("js/*.js").on('change', bs.reload);
     gulp.watch("*.html").on('change', bs.reload);
 });
 

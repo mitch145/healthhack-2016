@@ -40,28 +40,16 @@
             <a href="#" class="btn btn-default btn-lg" ng-click="console.log('new item')"><strong>+</strong></a>
           </div>
           <div class="notes-list">
-            <div class="note">
-              <div class="note-date blue-date">
-                <p class="text-center">14th</p>
-                <p class="text-center">Oct</p>
-                <p class="text-center">12pm</p>
-              </div>
-              <div class="note-content">
-                <h4>Neurologist</h4>
-                <p>Mr Doctor Man</p>
-                <p>Fake Address, Address St. Fake Address, Address St.</p>
-              </div>
-            </div>
-            <div class="note">
+            <div ng-repeat="note in notes" class="note">
               <div class="note-date red-date">
                 <p class="text-center">14th</p>
                 <p class="text-center">Oct</p>
                 <p class="text-center">12pm</p>
               </div>
               <div class="note-content">
-                <h4>Neurologist</h4>
-                <p>Mr Doctor Man</p>
-                <p>Fake Address, Address St.</p>
+                <h4>{{note.doctor.type}}</h4>
+                <p>{{note.doctor.name}}</p>
+                <p>{{note.doctor.address}}</p>
               </div>
             </div>
           </div>
