@@ -102,7 +102,6 @@
                         </div>
                       </fieldset>
                     </form>
-                    {{type}}
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -112,7 +111,7 @@
               </div>
             </div>
             <div ng-repeat="note in notes" class="note row" ng-click="$parent.displayNote = note.id" ng-class="{active: ($parent.displayNote == note.id)}">
-              <div class="note-date red-date">
+              <div class="note-date" ng-class="{'red-date': (note.type == 'Reminder'), 'green-date': (note.type == 'Consultation'), 'blue-date': (note.type == 'Result')}">
                 <p class="text-center">{{note.date.day}}</p>
                 <p class="text-center">{{note.date.month}}</p>
                 <p class="text-center">{{note.date.time}}</p>

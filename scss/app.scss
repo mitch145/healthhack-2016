@@ -93,6 +93,12 @@
         border-bottom: 1px solid #c0392b;
         border-right: 1px solid #c0392b;
       }
+      .green-date{
+        color: #ecf0f1;
+        background-color: #2ecc71;
+        border-bottom: 1px solid #27ae60;
+        border-right: 1px solid #27ae60;
+      }
       h1, h2, h3, h4, p{
         margin: 0;
       }
@@ -108,6 +114,9 @@
       }
       .red-date{
         background-color: #c0392b;
+      }
+      .green-date{
+        background-color: #27ae60;
       }
       .note-content{
         background-color: #ecf0f1;
