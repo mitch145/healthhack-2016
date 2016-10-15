@@ -281,6 +281,7 @@ var idempotentialize = function(f){
       
       var json = JSON.stringify($scope.model);
       localStorage["prevention_answers"] = json;
+      alert("Questionnaire saved");
   };
   
   $scope.downloadCal = function() {
