@@ -88,7 +88,7 @@
         margin: 0;
       }
     }
-    .note:hover, .note:active{
+    .note:hover, .active{
       cursor:pointer;
       .blue-date{
         background-color: #2980b9;
@@ -115,7 +115,7 @@
       font-size: 20px;
     }
     h1, h2, h3, p{
-      margin: 10px 0 10px 0;
+      margin: 10px;
     }
   }
 }

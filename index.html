@@ -40,7 +40,7 @@
             <a href="#" class="btn btn-default btn-lg" ng-click="console.log('new item')"><strong>+</strong></a>
           </div>
           <div class="notes-list">
-            <div ng-repeat="note in notes" class="note" ng-click="$parent.displayNote = note.id">
+            <div ng-repeat="note in notes" class="note" ng-click="$parent.displayNote = note.id" ng-class="{active: ($parent.displayNote == note.id)}">
               <div class="note-date red-date">
                 <p class="text-center">{{note.date.day}}</p>
                 <p class="text-center">{{note.date.month}}</p>
