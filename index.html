@@ -40,7 +40,7 @@
             <a href="#" class="btn btn-default btn-lg" ng-click="console.log('new item')"><strong>+</strong></a>
           </div>
           <div class="notes-list">
-            <div ng-repeat="note in notes" class="note">
+            <div ng-repeat="note in notes" class="note" ng-click="$parent.displayNote = note.id">
               <div class="note-date red-date">
                 <p class="text-center">{{note.date.day}}</p>
                 <p class="text-center">{{note.date.month}}</p>
@@ -53,8 +53,15 @@
               </div>
             </div>
           </div>
-          <div class="display-note">
-            <p>Column 3</p>
+          <div class="display-note" ng-repeat="note in notes" ng-show="displayNote == note.id">
+            <h1>{{note.doctor.type}}</h1>
+            <h3>{{note.doctor.name}}</h3>
+            <h3>{{note.doctor.address}}</h3>
+            <h3>{{note.date.day}} {{note.date.month}} {{note.date.time}}</h3>
+            <h2>Comments</h2>
+            <p>{{note.comments}}</p>
+            <h2>Prescription</h2>
+            <p>{{note.prescription}}</p>
           </div>
         </div>
       </div>

@@ -73,20 +73,49 @@
         }
       }
       .blue-date{
-        background-color: #3498db;
         color: #ecf0f1;
+        background-color: #3498db;
+        border-bottom: 1px solid #2980b9;
+        border-right: 1px solid #2980b9;
       }
       .red-date{
-        background-color: #e74c3c;
         color: #ecf0f1;
+        background-color: #e74c3c;
+        border-bottom: 1px solid #c0392b;
+        border-right: 1px solid #c0392b;
       }
       h3, h4, p{
         margin: 0;
       }
     }
+    .note:hover, .note:active{
+      cursor:pointer;
+      .blue-date{
+        background-color: #2980b9;
+      }
+      .red-date{
+        background-color: #c0392b;
+      }
+      .note-content{
+        background-color: #bdc3c7;
+      }
+    }
   }
   .display-note{
+    padding: 10px;
     height: 95vh;
     float: left;
+    h1{
+      font-size: 60px;
+    }
+    h2 {
+      font-size: 40px;
+    }
+    h3{
+      font-size: 20px;
+    }
+    h1, h2, h3, p{
+      margin: 10px 0 10px 0;
+    }
   }
 }
