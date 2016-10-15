@@ -73,7 +73,7 @@ app.controller("MainController", function($scope){
     });
   });
 
-  function writeNewNote(type, name, address, day, month, time, comments, prescription) {
+  function writeNewNote(type, title, time, day, month, year, details) {
 
     // Get a key for a new Post.
     var newPostKey = database.ref().child('notes').push().key;
@@ -81,18 +81,15 @@ app.controller("MainController", function($scope){
     // A post entry.
     var postData = {
       id: newPostKey,
-      doctor: {
-        type: type,
-        name: name,
-        address: address
-      },
+      type: type,
+      title: title,
       date:{
+        time: time,
         day: day,
         month: month,
-        time: time
+        year: year
       },
-      comments: comments,
-      prescription: prescription
+      details: details
     }
 
     // Write the new post's data
@@ -114,26 +111,20 @@ app.controller("MainController", function($scope){
   // Watch the firebase database
   firebase.database().ref('notes/').on('value', function(snapshot) {
     $scope.notes = snapshot.val();
-    // console.log("length");
-    // console.log($scope.notes.length);
-    // for (i = 0; i < $scope.notes.length; i++) {
-    //   console.log($scope.notes[i].body);
-    // }
   });
 
   $scope.newNote = function(){
     $("#myModal").modal('show')
   }
-  $scope.createNote = function(type, name, address, day, month, time, comments, prescription){
-    writeNewNote(type, name, address, day, month, time, comments, prescription);
+  $scope.createNote = function(type, title, time, day, month, year, details){
+    writeNewNote(type, title, time, day, month, year, details);
     $scope.type = ''
-    $scope.name = ''
-    $scope.address = ''
+    $scope.title = ''
+    $scope.time = ''
     $scope.day = ''
     $scope.month = ''
-    $scope.time = ''
-    $scope.comments = ''
-    $scope.prescription = ''
+    $scope.year = ''
+    $scope.details = ''
     $("#myModal").modal('hide')
   }
 });

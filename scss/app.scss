@@ -79,7 +79,6 @@
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-
         }
       }
       .blue-date{
@@ -94,8 +93,11 @@
         border-bottom: 1px solid #c0392b;
         border-right: 1px solid #c0392b;
       }
-      h3, h4, p{
+      h1, h2, h3, h4, p{
         margin: 0;
+      }
+      h1{
+        margin-bottom: 4px;
       }
     }
     .note:hover, .active{
@@ -118,7 +120,7 @@
     height: 90vh;
     float: left;
     h1{
-      font-size: 60px;
+      font-size: 40px;
     }
     h2 {
       font-size: 40px;
