@@ -42,9 +42,9 @@
           <div class="notes-list">
             <div ng-repeat="note in notes" class="note">
               <div class="note-date red-date">
-                <p class="text-center">14th</p>
-                <p class="text-center">Oct</p>
-                <p class="text-center">12pm</p>
+                <p class="text-center">{{note.date.day}}</p>
+                <p class="text-center">{{note.date.month}}</p>
+                <p class="text-center">{{note.date.time}}</p>
               </div>
               <div class="note-content">
                 <h4>{{note.doctor.type}}</h4>

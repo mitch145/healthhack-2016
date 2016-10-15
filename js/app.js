@@ -7,6 +7,11 @@ app.controller("MainController", function($scope){
         type: 'Neurologist',
         name: 'Mitch Ball',
         address: 'Fake Address, Address St.'
+      },
+      date:{
+        day: '14th',
+        month: 'Oct',
+        time: '2pm'
       }
     },
     1: {
@@ -14,6 +19,11 @@ app.controller("MainController", function($scope){
         type: 'Cardiac Surgeon',
         name: 'Alexander Jones',
         address: '3 Melbourne Ave.'
+      },
+      date:{
+        day: '2nd',
+        month: 'Dec',
+        time: '9am'
       }
     }
   }
