@@ -1,4 +1,4 @@
-var app = angular.module("HealthHack", []);
+var app = angular.module("PHD", []);
 app.controller("MainController", function($scope){
   $scope.page = 'login'
 });
