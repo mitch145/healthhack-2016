@@ -36,12 +36,15 @@
       <div class="col-xs-12 main-screen" ng-show="page == 'main'">
         <div class="row">
           <div class="menu col-sm-2 hidden-xs hidden-sm">
-            <a href="#" class="btn btn-default" ng-click="console.log('new item')">Upcoming</a>
-            <a href="#" class="btn btn-default" ng-click="console.log('new item')">Past Records</a>
-            <a href="#" class="btn btn-default" ng-click="console.log('new item')">Personal</a>
-            <a href="#" class="btn btn-default" ng-click="console.log('new item')">Reports</a>
+            <a href="#" class="btn btn-default btn-block" ng-click="console.log('new item')">Upcoming</a>
+            <a href="#" class="btn btn-default btn-block" ng-click="console.log('new item')">Past Records</a>
+            <a href="#" class="btn btn-default btn-block" ng-click="console.log('new item')">Personal</a>
+            <a href="#" class="btn btn-default btn-block" ng-click="console.log('new item')">Reports</a>
           </div>
           <div class="notes-list col-xs-12 col-sm-4 col-md-3">
+            <div class="new-note row">
+              <h1 class="text-center">+ New Note</h1>
+            </div>
             <div ng-repeat="note in notes" class="note row" ng-click="$parent.displayNote = note.id" ng-class="{active: ($parent.displayNote == note.id)}">
               <div class="note-date red-date">
                 <p class="text-center">{{note.date.day}}</p>

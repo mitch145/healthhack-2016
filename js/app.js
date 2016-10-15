@@ -1,6 +1,6 @@
 var app = angular.module("PHD", []);
 app.controller("MainController", function($scope){
-  $scope.page = 'login'
+  $scope.page = 'main'
   $scope.displayNote = 0;
   $scope.notes = {
     0: {

@@ -29,14 +29,11 @@
     background-color: #f8f8f8;
     border-right: 1px solid #ececec;
     border-bottom: 1px solid #ececec;
+    padding: 0 20px 20px 20px;
     .btn{
       font-size: 14px;
       box-shadow: none;
-      margin: 40px 0 0 10px;
       border: 1px solid #ececec;
-      width: 130px;
-    }
-    .btn:first-of-type{
       margin-top: 20px;
     }
   }
@@ -46,6 +43,19 @@
     border-right: 1px solid #ececec;
     border-bottom: 1px solid #ececec;
     overflow: scroll;
+    .new-note{
+      height: 75px;
+      border-bottom: 1px solid #ececec;
+      h1{
+        font-size: 20px;
+        margin: 0;
+        padding: 26px 0 0 0;
+      }
+    }
+    .new-note:hover{
+      cursor: pointer;
+      background-color: #ecf0f1;
+    }
     .note{
       display: flex;
       height: 75px;
@@ -90,7 +100,7 @@
     }
     .note:hover, .active{
       cursor:pointer;
-      background-color: #bdc3c7;
+      background-color: #ecf0f1;
       .blue-date{
         background-color: #2980b9;
       }
@@ -98,7 +108,7 @@
         background-color: #c0392b;
       }
       .note-content{
-        background-color: #bdc3c7;
+        background-color: #ecf0f1;
       }
     }
   }
