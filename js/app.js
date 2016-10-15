@@ -49,4 +49,19 @@ app.controller("MainController", function($scope){
       prescription:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     }
   }
+  $scope.newNote = function(){
+    $("#myModal").modal('show')
+  }
+  $scope.createNote = function(type, name, address, day, month, time, comments, prescription){
+    writeNewNote(type, name, address, day, month, time, comments, prescription);
+    $scope.type = ''
+    $scope.name = ''
+    $scope.address = ''
+    $scope.day = ''
+    $scope.month = ''
+    $scope.time = ''
+    $scope.comments = ''
+    $scope.prescription = ''
+    $("#myModal").modal('hide')
+  }
 });
