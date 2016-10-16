@@ -1,5 +1,8 @@
 # PHD (Personal Health Diary)
-*"It's all about you"*
+*"Your health in your words"*
+
+* [Design prototype](https://invis.io/U68YSI6BR#/197244890_Open)
+* [Development prototype](http://personalhealthdiary.mitchball.com/)
 
 ## Synopsis
 Do you know when was the last time you had a tetanus shot? Can you remember
@@ -10,12 +13,19 @@ PHD is a web-based app for recording and managing your health information. It
 allows you to access all this information anytime, anywhere from a computer,
 tablet or smartphone.
 
-Main features:
-- Appointment reminders
+MAIN FEATURES:
+
+Keep track of your consultation notes:
+- Add notes explain your test results
 - Records of past consultations with notes section
-- Journal to track symptoms
 - Upload function to attach lab test results and reports
 - Tags to allow easy filtering
+- Journal to track symptoms and questions to ask the doctor
+- View all your reports and test results in one place (with your own annotations)
+
+Calendar:
+- Consultation reminders
+- integrated with an App that calculates and recommends checkups to you based on your health information e.g. health history, age, gender etc...
 
 PHD will allow you to take control of your own health and healthcare and will
 facilitate communications with the various doctors and health professionals you
