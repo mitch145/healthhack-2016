@@ -53,7 +53,7 @@
                         <div class="col-lg-9">
                           <select class="form-control" ng-model="type">
                             <option>Reminder</option>
-                            <option>Consult</option>
+                            <option>Consultation</option>
                             <option>Result</option>
                           </select>
                           <br>
@@ -117,6 +117,8 @@
             </div>
           </div>
           <div class="display-note col-sm-8 col-md-9" ng-repeat="note in notes" ng-show="displayNote == note.id">
+            <a href="#" class="btn btn-danger">Delete</a>
+            <hr>
             <h1>{{note.type}} - {{note.title}}</h1>
             <h3>{{note.doctor.name}}</h3>
             <h3>{{note.doctor.address}}</h3>
