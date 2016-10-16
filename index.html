@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHD</title>
     <link rel="stylesheet" href="public/app.css">
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+    <!-- AngularJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <!-- Firebase -->
+  	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <!-- Custom JS -->
+    <script src="js/app.js"></script>
 	<link rel="shortcut icon" type="image/png" href="/logo.png"/>
 </head>
 <body ng-app="PHD" ng-controller="MainController as mainCtrl">
@@ -129,7 +139,7 @@
             </div>
           </div>
           <div class="display-note col-sm-8 col-md-9" ng-repeat="note in notes" ng-show="displayNote == note.id">
-            <a href="#" class="btn btn-danger">Delete</a>
+            <button type="button" class="btn btn-danger" ng-click="removeNote($scope, note.id)">Delete</button>
             <hr>
             <h1>{{note.type}} - {{note.title}}</h1>
             <h3>{{note.doctor.name}}</h3>
@@ -141,15 +151,5 @@
       </div>
     </div>
   </div>
-  <!-- JQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <!-- Bootstrap -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
-  <!-- AngularJS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
-  <!-- Firebase -->
-	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-  <!-- Custom JS -->
-  <script src="js/app.js"></script>
 </body>
 </html>
